@@ -24,8 +24,17 @@ let elemsbyTag = document.getElementsByTagName('li')
 
 for(let i=0;i<elemsbyTag.length;i++){
     elemsbyTag[i].style.fontWeight = "bold"
-    elemsbyTag[i].style.color = "blue"
 }
+
+document.querySelector("#items > li:nth-child(2)").style.color= "green"
+
+var odd = document.querySelectorAll('li:nth-child(odd)')
+
+for(let i=0;i<odd.length;i++){
+    odd[i].style.backgroundColor = "green"
+}
+
+
 
 
 
