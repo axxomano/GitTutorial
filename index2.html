@@ -55,6 +55,21 @@
                 delButtons[i].parentNode.remove()
         });
     }
+
+    //fILTER iTEMS 
+    let li = document.getElementsByTagName('li')
+    document.getElementById('filter').addEventListener('keyup',function(){
+        let content = (this.value.toLowerCase());
+
+        Array.from(li).forEach(element => {
+            if(element.firstChild.textContent.toLocaleLowerCase().indexOf(content) != -1)
+                element.style.display = 'block';
+            else
+                element.style.display = 'none';
+        });
+    });
+
+
 </script>
 </body>
 </html>
