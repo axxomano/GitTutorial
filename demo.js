@@ -13,3 +13,19 @@ let elems = document.getElementsByClassName('list-group-item')
 for(let i=0;i<elems.length;i++){
     elems[i].style.fontWeight = "bold"
 }
+
+let liEle = document.createElement('li')
+liEle.setAttribute('class','list-group-item')
+liEle.innerText = "Item 5"
+
+document.querySelector("#items").appendChild(liEle)
+
+let elemsbyTag = document.getElementsByTagName('li')
+
+for(let i=0;i<elemsbyTag.length;i++){
+    elemsbyTag[i].style.fontWeight = "bold"
+    elemsbyTag[i].style.color = "blue"
+}
+
+
+
