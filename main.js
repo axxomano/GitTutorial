@@ -14,6 +14,7 @@ document.getElementsByClassName('btn')[0].addEventListener('click',function(){
         'email':email
     }
 
+    
     userObj = JSON.stringify(userObj)
 
    //if(!localStorage.getItem('userObj'))
