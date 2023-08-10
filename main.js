@@ -1,16 +1,22 @@
-let storedUser = localStorage.getItem('userLogin')
-let storedEmail = localStorage.getItem('userEmail')
+let storedUserObj = localStorage.getItem('userObj')
 
-if(storedUser)
-console.log(storedUser)
-if(storedEmail)
-console.log(storedEmail)
+if(storedUserObj){
+    console.log(JSON.parse(storedUserObj))
+}
+
 document.getElementsByClassName('btn')[0].addEventListener('click',function(){
     console.log('clicked')
     let name = document.getElementById('name').value
     let email = document.getElementById('email').value
-    localStorage.setItem('userLogin',name)
-    localStorage.setItem('userEmail',email)
+
+    let userObj = {
+        'name':name,
+        'email':email
+    }
+
+    userObj = JSON.stringify(userObj)
+
+    localStorage.setItem('userObj',userObj)
 
 })
 //.addEventListener('click')
