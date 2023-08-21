@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded",()=>{
         (resp)=>{
             console.log(resp)
             for(let i=0;i<resp.data.length;i++){
-                showUseronScreen(resp.data[i].name,resp.data[i].role)
+                showUseronScreen(resp.data[i].name,resp.data[i].role,resp.data[i]._id)
             }
         }).catch((err)=>{
             console.log(err)
@@ -24,7 +24,7 @@ document.getElementsByClassName('btn')[0].addEventListener('click',function(){
 
     let userObj = {
         'name':name,
-        'email':email
+        'role':email
     }
 
 
@@ -32,7 +32,7 @@ document.getElementsByClassName('btn')[0].addEventListener('click',function(){
 
     axios.post("https://crudcrud.com/api/175ff33617f54bb195572008f1b4306d/appointmentData/",userObj).then((response)=>{
         console.log(response)
-        showUseronScreen(userObj.name,userObj.email)
+        showUseronScreen(userObj.name,userObj.role)
     }).catch((err)=>{
         console.log(err)
     })
@@ -65,7 +65,13 @@ function showUseronScreen(name,email,userObjItem){
         //console.log('deleted')
         //localStorage.removeItem(userObjItem)
         //sxios delete
+        axios.delete("https://crudcrud.com/api/175ff33617f54bb195572008f1b4306d/appointmentData/"+userObjItem).then((response)=>{
+            console.log(response)
+        }).catch((err)=>{
+            console.log(err)
+        })
 
+        
         this.parentElement.remove();
     })
     edit.addEventListener('click',function(){
