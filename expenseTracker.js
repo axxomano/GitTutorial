@@ -22,7 +22,12 @@ document.getElementsByClassName('btn')[0].addEventListener('click',function(){
    //if(!localStorage.getItem('userObj'))
    let userObjItem = 'userObj'+i
    console.log(userObjItem)
-        localStorage.setItem(userObjItem, userObj);
+        //localStorage.setItem(userObjItem, userObj);
+        axios.post("https://crudcrud.com/api/175ff33617f54bb195572008f1b4306d/appointmentData/",userObj).then((response)=>{
+            console.log(response)
+        }).catch((err)=>{
+            console.log(err)
+        })
         let li = document.createElement('li')
         let span = document.createElement('span')
         let spanTwo = document.createElement('span')
