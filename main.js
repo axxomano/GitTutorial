@@ -1,4 +1,4 @@
-
+var mode = 'add'
 window.addEventListener("DOMContentLoaded",()=>{
     //let storedUserObj = localStorage.getItem('userObj')
 
@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 //if(storedUserObj){
 //    console.log(JSON.parse(storedUserObj))
 //}
-var i = 0
+var i = 0,putID = ""
 
 document.getElementsByClassName('btn')[0].addEventListener('click',function(){
     let name = document.getElementById('name').value
@@ -27,6 +27,15 @@ document.getElementsByClassName('btn')[0].addEventListener('click',function(){
         'role':email
     }
 
+    if(mode = 'edit'){
+        axios.put("https://crudcrud.com/api/175ff33617f54bb195572008f1b4306d/appointmentData/"+putID,userObj).then((response)=>{
+            console.log(response)
+        }).catch((err)=>{
+            console.log(err)
+        })
+        mode = 'add'
+        return
+    }
 
     userObj = JSON.stringify(userObj)
 
@@ -39,7 +48,6 @@ document.getElementsByClassName('btn')[0].addEventListener('click',function(){
 
     
    //if(!localStorage.getItem('userObj'))
-   let userObjItem = 'userObj'+i
    console.log(userObjItem)
         //localStorage.setItem(userObjItem, userObj);
   
@@ -79,13 +87,14 @@ function showUseronScreen(name,email,userObjItem){
         //let theItem = JSON.parse(localStorage.getItem(userObjItem))
         //axios get
 
-        let theUser = theItem.name
-        let theEmail = theItem.email
+        let theUser = name
+        let theEmail = email
+        putID = this.id
 
         document.getElementById('name').value = theUser
         document.getElementById('email').value = theEmail
-        userObjItem.email
-        localStorage.removeItem(userObjItem)
+
+        mode = 'edit'
         this.parentElement.remove();
     })
 }
